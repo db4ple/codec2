@@ -11,6 +11,8 @@ addons:
   apt:
     packages: libc6-i386 octave-common octave gnuplot
       sox p7zip-full python3-numpy octave-signal valgrind
+  homebrew:
+    packages: p7zip
 cache:
   directories:
   - "$HOME/$GCC_BASE"

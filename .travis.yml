@@ -14,7 +14,6 @@ addons:
   homebrew:
     packages: 
       - p7zip
-      - python3-numpy
       - octave
       - octave-signal
       - sox

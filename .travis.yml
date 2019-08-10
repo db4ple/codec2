@@ -15,8 +15,8 @@ addons:
     packages: 
       - p7zip
       - octave
-      - octave-signal
       - sox
+      - valgrind
     update: true 
 cache:
   directories:
@@ -36,6 +36,7 @@ install:
   stdperiph_lib.zip; fi
 - unset STDLIBURL STDLIBKEY # DO NOT TOUCH  
 - python3 -m pip install numpy
+-  echo "pkg install -forge control signal" |  octave-cli
 script:
 - mkdir -p $BUILDSTD
 - cd $BUILDSTD

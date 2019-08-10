@@ -36,6 +36,7 @@ install:
 - if [ ! "$STDLIBURL" == "" ]; then pwd; wget -q $STDLIBURL; 7z  x -p$STDLIBKEY -o$HOME
   stdperiph_lib.zip; fi
 - unset STDLIBURL STDLIBKEY # DO NOT TOUCH  
+- python3 -m pip install numpy
 script:
 - mkdir -p $BUILDSTD
 - cd $BUILDSTD

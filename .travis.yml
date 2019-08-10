@@ -16,6 +16,8 @@ addons:
       - p7zip
       - python3-numpy
       - octave
+      - octave-signal
+      - sox
     update: true 
 cache:
   directories:

@@ -23,8 +23,8 @@ cache:
   - "$HOME/$GCC_BASE"
 install:
 - export GCC_DIR=$HOME/$GCC_BASE
-- export GCC_ARCHIVE=$HOME/$GCC_BASE-linux.tar.bz2
-- export GCC_URL=https://armkeil.blob.core.windows.net/developer/Files/downloads/gnu-rm/$GCC_SHORT/$GCC_BASE-linux.tar.bz2
+- export GCC_ARCHIVE=$HOME/$GCC_BASE-mac.tar.bz2
+- export GCC_URL=https://armkeil.blob.core.windows.net/developer/Files/downloads/gnu-rm/$GCC_SHORT/$GCC_BASE-mac.tar.bz2
 - if [ ! -e $GCC_DIR/bin/arm-none-eabi-g++ ]; then wget -q $GCC_URL -O $GCC_ARCHIVE;
   tar xfj $GCC_ARCHIVE -C $HOME; fi
 - export CODEC2DEV=${PWD}

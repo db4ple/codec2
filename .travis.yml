@@ -1,5 +1,6 @@
 os:
   - osx
+  - linux
 env:
   global:
   - GCC_BASE=gcc-arm-none-eabi-8-2018-q4-major
@@ -22,9 +23,10 @@ cache:
   directories:
   - "$HOME/$GCC_BASE"
 install:
+- if [ $TRAVIS_OS_NAME = linux ]; then export GCC_OS=linux ; else GCC_OS=mac; fi        
 - export GCC_DIR=$HOME/$GCC_BASE
-- export GCC_ARCHIVE=$HOME/$GCC_BASE-mac.tar.bz2
-- export GCC_URL=https://armkeil.blob.core.windows.net/developer/Files/downloads/gnu-rm/$GCC_SHORT/$GCC_BASE-mac.tar.bz2
+- export GCC_ARCHIVE=$HOME/$GCC_BASE-$GCC_OS.tar.bz2
+- export GCC_URL=https://armkeil.blob.core.windows.net/developer/Files/downloads/gnu-rm/$GCC_SHORT/$GCC_BASE-$GCC_OS.tar.bz2
 - if [ ! -e $GCC_DIR/bin/arm-none-eabi-g++ ]; then wget -q $GCC_URL -O $GCC_ARCHIVE;
   tar xfj $GCC_ARCHIVE -C $HOME; fi
 - export CODEC2DEV=${PWD}
@@ -35,8 +37,7 @@ install:
 - if [ ! "$STDLIBURL" == "" ]; then pwd; wget -q $STDLIBURL; 7z  x -p$STDLIBKEY -o$HOME
   stdperiph_lib.zip; fi
 - unset STDLIBURL STDLIBKEY # DO NOT TOUCH  
-- python3 -m pip install numpy
--  echo "pkg install -forge control signal" |  octave-cli
+- if [ $TRAVIS_OS_NAME = osx ]; then python3 -m pip install numpy && echo "pkg install -forge control signal" |  octave-cli ; fi
 script:
 - mkdir -p $BUILDSTD
 - cd $BUILDSTD

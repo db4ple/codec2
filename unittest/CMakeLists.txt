@@ -38,6 +38,7 @@ if (CMAKE_C_COMPILER MATCHES "gcc$")
 else()
     target_link_libraries(ofdm_stack function_trace m -no-pie)
     target_compile_options(ofdm_stack PUBLIC -finstrument-functions -no-pie)
+    target_link_libraries(ofdm_stack function_trace m -no-pie)
 endif()
 add_definitions(-D__UNITTEST__)
 
